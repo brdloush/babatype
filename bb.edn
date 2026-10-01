@@ -1,0 +1,39 @@
+{:paths ["src" "dev"]
+ ;; bb.edn does not read deps.edn, so the dependency is repeated here
+ :deps {io.github.brdloush/gtkiccup {:git/url "https://github.com/brdloush/gtkiccup"
+                                     :git/sha "cdd67ac8a3ac25fdfa36159d71c8985238f2beb4"}}
+
+ :tasks
+ {;; -Xmx has to be on the command line, so this re-execs babashka with it.
+  ;; bb is a GraalVM native image and honours -Xmx: it saves about 20 MB.
+  babatype {:doc "Run Babatype, the typing test on clojure.core's names."
+            :requires ([babashka.process])
+            :task (babashka.process/exec "bb" "-Xmx96m" "-m" "babatype.core")}
+
+  shot     {:doc "Write docs/images/<shot>.png -- the app screenshots itself. bb shot [babatype|babatype-results]"
+            :requires ([babashka.process])
+            :task (apply babashka.process/exec
+                         "bb" "-Xmx96m" "-m" "shot" *command-line-args*)}
+
+  install-desktop
+           {:doc "Install a .desktop file and the icon, so Babatype looks native."
+            :requires ([babatype.desktop :as desktop])
+            :task (desktop/-main "install")}
+
+  uninstall-desktop
+           {:doc "Remove what install-desktop wrote."
+            :requires ([babatype.desktop :as desktop])
+            :task (desktop/-main "uninstall")}
+
+  dev      {:doc "Start an nREPL server on port 1667."
+            :task (shell "bb" "nrepl-server" "1667")}
+
+  test     {:doc "Run all test files. The window tests need a display."
+            :task (doseq [f ["test/engine_test.clj"
+                             "test/words_test.clj"
+                             "test/babatype_test.clj"
+                             "test/caret_test.clj"
+                             "test/inspector_test.clj"
+                             "test/desktop_test.clj"]]
+                    (println (str "\n== " f))
+                    (shell "bb" f))}}}

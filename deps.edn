@@ -1,0 +1,4 @@
+{:paths ["src"]
+ ;; gtkiccup has no release yet, so a commit on GitHub
+ :deps {io.github.brdloush/gtkiccup {:git/url "https://github.com/brdloush/gtkiccup"
+                                     :git/sha "cdd67ac8a3ac25fdfa36159d71c8985238f2beb4"}}}
