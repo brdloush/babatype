@@ -46,22 +46,36 @@ language it is written in.
 
 You need:
 
-- **babashka 1.13.220 or later, the dynamically linked build.** The static
-  (musl) build cannot load system libraries.
-- **GTK4** (`libgtk-4.so.1`). On Debian/Ubuntu: `apt install libgtk-4-1`.
+- **babashka 1.13.220 or later.** On Linux, the dynamically linked build: the
+  static (musl) build cannot load system libraries.
+- **GTK4.**
 - **git.** [gtkiccup](https://github.com/brdloush/gtkiccup) has no release
   yet, so `bb.edn` names one of its commits, and babashka clones it on the
   first run.
 
-It is tested on Linux only.
+It runs on Linux and macOS.
+
+On Debian/Ubuntu (babashka from [its install
+page](https://github.com/babashka/babashka#installation)):
 
 ```bash
+sudo apt install libgtk-4-1
 git clone https://github.com/brdloush/babatype
 cd babatype
 bb babatype
 ```
 
-To give it its own icon and name in the app grid and the switcher:
+On macOS, with [Homebrew](https://brew.sh) (first run on a Mac, and these
+steps, by [@jirkapenzes](https://github.com/jirkapenzes) — thank you!):
+
+```bash
+brew install borkdude/brew/babashka gtk4
+git clone https://github.com/brdloush/babatype
+cd babatype
+bb babatype
+```
+
+On Linux, to give it its own icon and name in the app grid and the switcher:
 
 ```bash
 bb install-desktop      # one .desktop file and one icon, in ~/.local/share
