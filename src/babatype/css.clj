@@ -9,18 +9,19 @@
 .bg            { background: #202226; }
 
 /* --- the passage ------------------------------------------------------- */
-.passage       { font-family: 'JetBrains Mono','Fira Mono','DejaVu Sans Mono',monospace;
+.passage       { font-family: 'JetBrains Mono','Fira Mono','DejaVu Sans Mono',
+                 'Cascadia Mono','Consolas',monospace;
                  font-size: 30px; line-height: 1.75; }
 .hint          { font-size: 12px; color: alpha(#ffffff,0.34); }
 /* a thin bar between characters, as in the reference -- not a block over one */
 .caret         { background: #e2b714; border-radius: 2px; }
-.hint .k       { font-family: monospace; color: alpha(#ffffff,0.55); }
+.hint .k       { font-family: 'Cascadia Mono','Consolas',monospace; color: alpha(#ffffff,0.55); }
 
 /* --- the header ------------------------------------------------------- */
 .wordmark      { font-size: 21px; font-weight: 800; color: #eceff2;
                  letter-spacing: -0.5px; }
 .tagline       { font-size: 10px; color: alpha(#ffffff,0.30);
-                 letter-spacing: 1.6px; font-family: monospace; }
+                 letter-spacing: 1.6px; font-family: 'Cascadia Mono','Consolas',monospace; }
 
 /* --- the mode bar ----------------------------------------------------- */
 .modebar       { background: alpha(#000000,0.22); border-radius: 12px;
@@ -32,7 +33,7 @@
 .modebar button.on        { color: #e2b714; font-weight: 700; }
 
 /* --- the live counter ------------------------------------------------- */
-.live          { font-family: monospace; font-size: 15px; color: #e2b714;
+.live          { font-family: 'Cascadia Mono','Consolas',monospace; font-size: 15px; color: #e2b714;
                  font-weight: 700; letter-spacing: 1px; }
 
 /* --- results ---------------------------------------------------------- */

@@ -1,7 +1,7 @@
 {:paths ["src" "dev"]
  ;; bb.edn does not read deps.edn, so the dependency is repeated here
  :deps {io.github.brdloush/gtkiccup {:git/url "https://github.com/brdloush/gtkiccup"
-                                     :git/sha "cdd67ac8a3ac25fdfa36159d71c8985238f2beb4"}}
+                                     :git/sha "764cbecd470796d7edaabdec4e9581a2a5416685"}}
 
  :tasks
  {;; -Xmx has to be on the command line, so this re-execs babashka with it.

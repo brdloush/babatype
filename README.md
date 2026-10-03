@@ -53,7 +53,7 @@ You need:
   yet, so `bb.edn` names one of its commits, and babashka clones it on the
   first run.
 
-It runs on Linux and macOS.
+It runs on Linux, macOS and Windows.
 
 On Debian/Ubuntu (babashka from [its install
 page](https://github.com/babashka/babashka#installation)):
@@ -74,6 +74,30 @@ git clone https://github.com/brdloush/babatype
 cd babatype
 bb babatype
 ```
+
+On Windows 11, put these on `PATH` (one folder each is fine):
+
+- `bb.exe`, from `babashka-*-windows-amd64.zip` on [babashka's
+  releases](https://github.com/babashka/babashka/releases);
+- GTK4's `bin` folder, from `GTK4_Gvsbuild_*_x64.zip` on [gvsbuild's
+  releases](https://github.com/wingtk/gvsbuild/releases), a ready-built GTK
+  from the gvsbuild project that
+  [gtk.org](https://www.gtk.org/docs/installations/windows/) names (GTK from
+  MSYS2 should work too, but is not tried);
+- [Git for Windows](https://git-scm.com/download/win).
+
+Then, the same three lines as above:
+
+```
+git clone https://github.com/brdloush/babatype
+cd babatype
+bb babatype
+```
+
+If `bb` exits at once and prints nothing, Windows lacks the Visual C++
+runtime it needs. A fresh install does not have it; most used PCs got it from
+some other installer. Install the [Microsoft Visual C++
+Redistributable](https://aka.ms/vc14/vc_redist.x64.exe).
 
 On Linux, to give it its own icon and name in the app grid and the switcher:
 
